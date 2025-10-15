@@ -18,6 +18,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -47,7 +48,7 @@ export default function AppLayout({
   let idx = -1;
   const user: { name: string, avatar: string } = {
     name: role === "admin" ? "Admin" : role === "teacher" ? "Marie" : "Tahina",
-    avatar: role === "admin" ? "https://randomuser.me/api/portraits/men/1.jpg" : role === "teacher" ? "https://randomuser.me/api/portraits/women/45.jpg" : "https://randomuser.me/api/portraits/men/10.jpg"
+    avatar: role === "admin" ? "https://randomuser.me/api/portraits/men/1.jpg" : role === "teacher" ? "https://randomuser.me/api/portraits/women/45.jpg" : "https://randomuser.me/api/portraits/men/40.jpg"
   }
 
   if (pathname.includes("/")) {
@@ -66,7 +67,7 @@ export default function AppLayout({
     teacher: [
       { name: "Profil", icon: User, path: "/teacher" },
       { name: "Mes cours", icon: BookOpen, path: "/teacher/courses" },
-      { name: "Mes étudiants", icon: GraduationCap, path: "/teacher/students"},
+      { name: "Mes étudiants", icon: GraduationCap, path: "/teacher/students" },
     ],
     student: [
       { name: "Profil", icon: User, path: "/student" },
@@ -111,10 +112,8 @@ export default function AppLayout({
                       >
                         <Link
                           to={item.path}
-                          className={`flex items-center text-black gap-2 px-3 py-2 rounded-md transition-colors ${isActive
-                            ? "bg-[#0a50e8] text-white"
-                            : "hover:bg-blue-500 hover:text-white"
-                            }`}
+                          className={`flex items-center gap-2 px-3 hover:bg-blue-500 hover:text-white py-2 rounded-md transition-colors ${isActive
+                            && "bg-[#0a50e8] text-red-500"}`}
                         >
                           <Icon size={40} />
                           {item.name}
@@ -137,7 +136,8 @@ export default function AppLayout({
 
         <div className="flex-1 flex flex-col">
           <header className="flex h-16 items-center sticky top-0 z-10 gap-4 bg-white px-4 shadow-sm">
-            <div className="flex-1">
+            <div className="flex items-center gap-4 flex-1">
+              <SidebarTrigger className="lg:hidden" />
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">

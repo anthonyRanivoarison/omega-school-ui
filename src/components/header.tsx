@@ -33,7 +33,7 @@ export function Header() {
 
         <div className="hidden md:flex items-center gap-3">
           <Link
-            to="/connexion"
+            to="/login"
             className={buttonVariants({
               variant: "outline",
               className:

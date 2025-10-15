@@ -18,6 +18,7 @@ import TeachersPageOnAdmin from "./pages/admin/teachers";
 import CoursesStudentPage from "./pages/students/courses";
 import TeacherStudentsPage from "./pages/teachers/studentsPage";
 import TeacherCoursesPage from "./pages/teachers/coursesPage";
+import LoginPage from "./pages/Login";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/register" element={<WebsiteLayout><RegistrationPage /></WebsiteLayout>} />
         <Route path="/courses" element={<WebsiteLayout><CoursesPage /></WebsiteLayout>} />
         <Route path="/teachers" element={<WebsiteLayout><TeachersPage /></WebsiteLayout>} />
+        <Route path="/login" element={<LoginPage />} />
 
         {/* Admin board */}
         <Route path="/admin" element={<AppLayout role="admin"><AdminDashboardPage /></AppLayout>} />
