@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SUBJECTS } from "@/seeders/data";
-import { Pie, PieChart, Cell, Tooltip, Legend } from "recharts";
+import { Cell, Tooltip, Legend, ResponsiveContainer, CartesianGrid, Bar, BarChart, XAxis, YAxis } from "recharts";
 
 export default function StudentGradesPage() {
   const grades = SUBJECTS.map((subject) => ({
@@ -31,7 +31,7 @@ export default function StudentGradesPage() {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold text-[#1E40AF] mb-6">Mes Notes</h2>
+      <h2 className="text-5xl ds-font font-bold text-[#1E40AF] mb-6">Mes Notes</h2>
 
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="shadow-md">
@@ -67,31 +67,29 @@ export default function StudentGradesPage() {
           <CardHeader>
             <CardTitle>Répartition des notes</CardTitle>
           </CardHeader>
-          <CardContent className="flex justify-center">
-            <PieChart width={300} height={300}>
-              <Pie
+          <CardContent className="h-[400px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
                 data={chartData}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={110}
-                label={({ name, value }) => `${name.split(" ")[0]}: ${value}`}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
               >
-                {chartData.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip formatter={(value) => `${value}/20`} />
-              <Legend
-                layout="horizontal"
-                verticalAlign="bottom"
-                align="center"
-              />
-            </PieChart>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" angle={-45} textAnchor="end" height={70} />
+                <YAxis domain={[0, 20]} />
+                <Tooltip formatter={(value) => `${value}/20`} />
+                <Legend verticalAlign="top" height={36} />
+                <Bar dataKey="value" fill="#8884d8">
+                  {chartData.map((_, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
       </div>

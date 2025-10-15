@@ -1,5 +1,4 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Mail,
@@ -11,8 +10,9 @@ import {
   Hash,
 } from "lucide-react";
 import type { Student } from "@/types/user";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { InfoItem } from "@/components/info-item";
 
 export default function StudentDashboardPage() {
   const student: Student = {
@@ -120,28 +120,6 @@ export default function StudentDashboardPage() {
           </div>
         </CardFooter>
       </div>
-    </div>
-  );
-}
-
-function InfoItem({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex flex-col gap-1">
-      <Label className="flex items-center gap-2 font-semibold text-gray-700">
-        {icon}
-        {label}
-      </Label>
-      <p className="text-gray-600 text-sm bg-gray-50 px-3 py-2 rounded-md border border-gray-100 shadow-sm">
-        {value}
-      </p>
     </div>
   );
 }

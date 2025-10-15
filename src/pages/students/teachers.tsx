@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent,  } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -41,14 +41,11 @@ export default function StudentTeachersPage() {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold text-[#1E40AF] mb-6">
+      <h2 className="text-5xl ds-font font-bold text-[#1E40AF] mb-6">
         Mes Enseignants
       </h2>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Liste des enseignants</CardTitle>
-        </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>

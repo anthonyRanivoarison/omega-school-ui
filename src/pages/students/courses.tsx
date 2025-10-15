@@ -22,8 +22,8 @@ export default function CoursesStudentPage() {
     <div className="p-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-[#1E40AF]">
-            Mes Cours - Student
+          <CardTitle className="text-5xl ds-font font-bold text-[#1E40AF]">
+            Mes Cours
           </CardTitle>
         </CardHeader>
         <CardContent>
