@@ -14,7 +14,7 @@ export default function RegistrationPage() {
     <div className="min-h-screen w-full bg-gray-50">
       <div className="flex flex-col justify-center items-center py-10">
         <Card className="w-full max-w-xl shadow-lg border-0 rounded-xl">
-          <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-t-xl p-4">
+          <CardHeader className="rounded-t-xl">
             <CardTitle className="text-2xl font-bold">Rejoignez-nous</CardTitle>
             <CardDescription className="text-muted-foreground">
               Inscrivez-vous dès maintenant pour une aventure pleine chez Omega
