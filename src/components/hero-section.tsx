@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, easeInOut } from "framer-motion";
 import { GraduationCap, BookOpen, Brain, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -9,7 +9,7 @@ export function HeroSection() {
     transition: {
       duration: 4,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   };
 
