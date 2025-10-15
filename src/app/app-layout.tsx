@@ -35,7 +35,7 @@ import type React from "react";
 import { Separator } from "@/components/ui/separator";
 import { SidebarOptInForm } from "@/components/sidebar-opt-in-form";
 
-export function AppLayout({
+export default function AppLayout({
   children,
   role,
 }: {
@@ -46,8 +46,8 @@ export function AppLayout({
   let pathname = location.pathname.slice(1);
   let idx = -1;
   const user: { name: string, avatar: string } = {
-    name: role === "admin" ? "Admin" : role === "teacher" ? "Teacher" : "Tahina",
-    avatar: role === "admin" ? "https://randomuser.me/api/portraits/men/40.jpg" : role === "teacher" ? "https://randomuser.me/api/portraits/men/1.jpg" : "https://randomuser.me/api/portraits/men/10.jpg"
+    name: role === "admin" ? "Admin" : role === "teacher" ? "Marie" : "Tahina",
+    avatar: role === "admin" ? "https://randomuser.me/api/portraits/men/1.jpg" : role === "teacher" ? "https://randomuser.me/api/portraits/women/45.jpg" : "https://randomuser.me/api/portraits/men/10.jpg"
   }
 
   if (pathname.includes("/")) {
