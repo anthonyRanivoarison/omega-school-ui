@@ -11,8 +11,12 @@ import { Button } from "@/components/ui/button";
 import { Plus, Edit, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SUBJECTS, teachers } from "@/seeders/data";
+import type { NotificationType } from "@/components/notification";
+import { useState } from "react";
+import Notification from "@/components/notification";
 
 export default function CoursesOnAdminPage() {
+  const [notif, setNotif] = useState<NotificationType>();
   const subjectTeacherMap = SUBJECTS.map((subject) => ({
     subject,
     teachers: teachers
@@ -22,6 +26,7 @@ export default function CoursesOnAdminPage() {
 
   return (
     <div className="p-6">
+      {notif && <Notification message={notif.message} type={notif.type} />}
       <Card className="w-full mx-auto shadow-lg rounded-xl">
         <CardHeader className="flex justify-between items-center">
           <CardTitle className="text-2xl font-bold text-[#1E40AF]">
@@ -88,7 +93,7 @@ export default function CoursesOnAdminPage() {
                       variant="outline"
                       size="sm"
                       className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                      onClick={() => alert(`Éditer ${item.subject}`)}
+                      onClick={() => setNotif({ message: `Modifier ${item.subject}`, type: "success" })}
                     >
                       <Edit size={16} />
                     </Button>
@@ -96,7 +101,7 @@ export default function CoursesOnAdminPage() {
                       variant="outline"
                       size="sm"
                       className="bg-red-100 text-red-800 hover:bg-red-200"
-                      onClick={() => alert(`Supprimer ${item.subject}`)}
+                      onClick={() => setNotif({ message: `Supprime ${item.subject}`, type: "success" })}
                     >
                       <Trash size={16} />
                     </Button>

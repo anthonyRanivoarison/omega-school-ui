@@ -25,7 +25,6 @@ export default function StudentsPage() {
   ];
   const [selectedClass, setSelectedClass] = useState("Toutes les classes");
 
-
   const filteredStudents =
     selectedClass === "Toutes les classes"
       ? students
@@ -85,7 +84,7 @@ export default function StudentsPage() {
             <DialogContent>
               <RegistrationForm />
               <DialogFooter>
-                <p>All right reserved</p>
+                <p>Tous droit reserves</p>
               </DialogFooter>
             </DialogContent>
           </Dialog>
