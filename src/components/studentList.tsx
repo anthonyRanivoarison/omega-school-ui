@@ -10,22 +10,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Eye, Trash } from "lucide-react";
-import type { Student, Teacher } from "@/types/user";
 import type { NotificationType } from "@/components/notification";
 import Notification from "@/components/notification";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import type { Student } from "@/types/user";
 
-export default function UserList({
+export function StudentList({
   students,
-  teachers,
 }: {
-  students?: Student[];
-  teachers?: Teacher[];
+  students?: Student[]
 }) {
-  const users = (students ?? teachers ?? []) as (Student | Teacher)[];
-  const isTeacher = !!teachers;
   const [notif, setNotif] = useState<NotificationType>();
-  const [selectedUser, setSelectedUser] = useState<Student | Teacher | null>(
+  const [selectedstudent, setSelectedstudent] = useState<Student | null>(
     null
   );
 
@@ -39,11 +35,7 @@ export default function UserList({
             <TableHead>Avatar</TableHead>
             <TableHead>Nom</TableHead>
             <TableHead>Prénom</TableHead>
-            {isTeacher ? (
-              <TableHead>Matière</TableHead>
-            ) : (
-              <TableHead>Classe</TableHead>
-            )}
+            <TableHead>Classe</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Téléphone</TableHead>
             <TableHead>Actions</TableHead>
@@ -51,9 +43,9 @@ export default function UserList({
         </TableHeader>
 
         <TableBody>
-          {users.map((user, index) => (
+          {students?.map((student, index) => (
             <TableRow
-              key={user.id}
+              key={student.id}
               className="hover:bg-blue-50 transition-colors"
             >
               <TableCell>{index + 1}</TableCell>
@@ -61,27 +53,23 @@ export default function UserList({
               <TableCell>
                 <Avatar className="h-8 w-8">
                   <AvatarImage
-                    src={user.avatar}
-                    alt={`${user.firstName} ${user.lastName}`}
+                    src={student.avatar}
+                    alt={`${student.firstName} ${student.lastName}`}
                   />
                   <AvatarFallback>
-                    {user.firstName[0] + user.lastName[0]}
+                    {student.firstName[0] + student.lastName[0]}
                   </AvatarFallback>
                 </Avatar>
               </TableCell>
 
-              <TableCell>{user.lastName}</TableCell>
-              <TableCell>{user.firstName}</TableCell>
-
-              <TableCell>
-                {"subject" in user ? user.subject : (user as Student).grade}
-              </TableCell>
+              <TableCell>{student.lastName}</TableCell>
+              <TableCell>{student.firstName}</TableCell>
 
               <TableCell className="truncate max-w-[150px]">
-                {user.email ?? "N/A"}
+                {student.email ?? "N/A"}
               </TableCell>
 
-              <TableCell>{user.phone}</TableCell>
+              <TableCell>{student.phone}</TableCell>
 
               <TableCell>
                 <div className="flex items-center gap-2">
@@ -92,33 +80,33 @@ export default function UserList({
                         size="sm"
                         title="Voir profil"
                         className="text-blue-600 border-blue-300 hover:bg-blue-100"
-                        onClick={() => setSelectedUser(user)}
+                        onClick={() => setSelectedstudent(student)}
                       >
                         <Eye className="w-4 h-4 mr-1" />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-80 p-4">
-                      {selectedUser && (
+                      {selectedstudent && (
                         <div className="space-y-2">
                           <div className="flex items-center gap-4">
                             <img
-                              src={selectedUser.avatar}
-                              alt={`${selectedUser.firstName} ${selectedUser.lastName}`}
+                              src={selectedstudent.avatar}
+                              alt={`${selectedstudent.firstName} ${selectedstudent.lastName}`}
                               className="w-16 h-16 rounded-full border-2 border-gray-200 object-cover"
                             />
                             <div>
                               <h3 className="text-lg font-semibold text-[#1E40AF]">
-                                {selectedUser.firstName} {selectedUser.lastName}
+                                {selectedstudent.firstName} {selectedstudent.lastName}
                               </h3>
                               <p className="text-sm text-gray-600">
-                                Classe: {selectedUser?.grade}
+                                Classe: {selectedstudent?.grade}
                               </p>
                             </div>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Email: {selectedUser.email || "N/A"}</p>
-                            <p>Téléphone: {selectedUser.phone}</p>
-                            <p>Adresse: {selectedUser.address}</p>
+                            <p>Email: {selectedstudent.email || "N/A"}</p>
+                            <p>Téléphone: {selectedstudent.phone}</p>
+                            <p>Adresse: {selectedstudent.address}</p>
                           </div>
                         </div>
                       )}
@@ -138,7 +126,7 @@ export default function UserList({
             </TableRow>
           ))}
 
-          {users.length === 0 && (
+          {students?.length === 0 && (
             <TableRow>
               <TableCell colSpan={8} className="text-center text-gray-500 py-4">
                 Aucun utilisateur trouvé.

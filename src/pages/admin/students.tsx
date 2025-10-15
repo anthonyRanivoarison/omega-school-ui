@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import UserList from "@/components/UserList";
+import {StudentList} from "@/components/studentList";
 import { students } from "@/seeders/data";
 import { Search } from "lucide-react";
 import {
@@ -91,7 +91,7 @@ export default function StudentsPage() {
         </div>
       </div>
 
-      <UserList students={filteredStudents} />
+      <StudentList students={filteredStudents} />
     </div>
   );
 }
