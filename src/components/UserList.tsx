@@ -129,6 +129,7 @@ export default function UserList({
                     size="sm"
                     title="Supprimer"
                     className="bg-red-500 hover:bg-red-600 text-white"
+                    onClick={() => { setNotif({ message: `Supprime`, type: "success", duration: 3000 }), setNotif(undefined) }}
                   >
                     <Trash className="w-4 h-4" />
                   </Button>
