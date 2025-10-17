@@ -20,11 +20,11 @@ export function Header() {
           <Link to="/" className="hover:text-[#1E40AF] transition">
             Accueil
           </Link>
-          <Link to="/annonces" className="hover:text-[#1E40AF] transition">
-            Annonces
+          <Link to="/courses" className="hover:text-[#1E40AF] transition">
+            Nos cours
           </Link>
-          <Link to="#about" className="hover:text-[#1E40AF] transition">
-            À propos
+          <Link to="/announcement" className="hover:text-[#1E40AF] transition">
+            Annonces
           </Link>
           <Link to="/contact" className="hover:text-[#1E40AF] transition">
             Contact
@@ -35,9 +35,9 @@ export function Header() {
           <Link
             to="/login"
             className={buttonVariants({
-              variant: "outline",
+              variant: "ghost",
               className:
-                "border-[#1E40AF] text-[#1E40AF] hover:bg-[#1E40AF] hover:text-white transition",
+                "border border-[#1E40AF] text-[#1E40AF] transition",
             })}
           >
             Connexion
