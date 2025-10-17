@@ -19,6 +19,7 @@ import CoursesStudentPage from "./pages/students/courses";
 import TeacherStudentsPage from "./pages/teachers/studentsPage";
 import TeacherCoursesPage from "./pages/teachers/coursesPage";
 import LoginPage from "./pages/Login";
+import AnnouncementPage from "./pages/Announcement";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/register" element={<WebsiteLayout><RegistrationPage /></WebsiteLayout>} />
         <Route path="/courses" element={<WebsiteLayout><CoursesPage /></WebsiteLayout>} />
         <Route path="/teachers" element={<WebsiteLayout><TeachersPage /></WebsiteLayout>} />
+        <Route path="/announcement" element={<WebsiteLayout><AnnouncementPage /></WebsiteLayout>} />
         <Route path="/login" element={<LoginPage />} />
 
         {/* Admin board */}
